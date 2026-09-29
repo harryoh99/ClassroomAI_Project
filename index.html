@@ -1,0 +1,1098 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#f8f6ef" />
+    <meta
+      name="description"
+      content="Classroom AI: large language models as grade-specific teachers. Explore six reading levels, real model examples, and a framework for grade-aligned educational explanations. Published in npj Artificial Intelligence."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Classroom AI — Big ideas. At the right level."
+    />
+    <meta
+      property="og:description"
+      content="Six grade levels. Seven readability metrics. A new way to train language models for the reader. Published in npj Artificial Intelligence, 2026."
+    />
+    <meta
+      name="citation_title"
+      content="Classroom AI: large language models as grade-specific teachers"
+    />
+    <meta name="citation_author" content="Jio Oh" />
+    <meta name="citation_author" content="Steven Euijong Whang" />
+    <meta name="citation_author" content="James Evans" />
+    <meta name="citation_author" content="Jindong Wang" />
+    <meta name="citation_publication_date" content="2026/03/03" />
+    <meta name="citation_journal_title" content="npj Artificial Intelligence" />
+    <meta name="citation_doi" content="10.1038/s44387-026-00081-7" />
+    <title>Classroom AI · Big ideas. At the right level.</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="assets/fonts/Manrope.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="assets/research-data.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a class="brand" href="#" aria-label="Classroom AI home"
+          ><span class="brand-icon" aria-hidden="true"
+            ><svg viewBox="0 0 32 32">
+              <path
+                d="M4 7h9l3 3 3-3h9v19h-9l-3 2-3-2H4zM16 10v18M8 12h4M8 17h4M20 12h4M20 17h4"
+              /></svg></span
+          >Classroom<span class="brand-ai">AI</span></a
+        >
+        <button
+          class="menu-toggle"
+          aria-expanded="false"
+          aria-controls="navigation"
+          hidden
+        >
+          Menu <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="navigation" aria-label="Main navigation">
+          <a href="#classroom">The classroom</a><a href="#method">Method</a
+          ><a href="#results">Results</a><a href="#resources">Resources</a
+          ><a
+            class="nav-paper"
+            href="https://www.nature.com/articles/s44387-026-00081-7"
+            >Read the paper <span aria-hidden="true">↗</span></a
+          >
+        </nav>
+      </div>
+      <div class="reading-progress" aria-hidden="true">
+        <span id="reading-progress"></span>
+      </div>
+    </header>
+    <main id="main">
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <a
+            class="publication-badge"
+            href="https://www.nature.com/articles/s44387-026-00081-7"
+            ><span class="badge-dot" aria-hidden="true"></span> PUBLISHED IN
+            <strong>npj Artificial Intelligence</strong
+            ><span aria-hidden="true">↗</span></a
+          >
+          <p class="eyebrow hero-kicker">CLASSROOM AI / RESEARCH PROJECT</p>
+          <h1 id="hero-title">
+            Big ideas.<br />At the <span class="hand-underline">right</span
+            ><br /><span class="blue">level.</span>
+          </h1>
+          <p class="hero-description">
+            An explanation only helps if you can understand it. We train
+            language models to meet the reader—from first grade to adult
+            learning.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="button button-blue"
+              href="https://www.nature.com/articles/s44387-026-00081-7"
+              >Explore the paper <span aria-hidden="true">↗</span></a
+            ><a
+              class="button button-outline"
+              href="https://github.com/harryoh99/ClassroomAI"
+              ><svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m8 7-5 5 5 5m8-10 5 5-5 5m-5 3 2-16" /></svg
+              >Code &amp; data</a
+            >
+          </div>
+          <p class="hero-margin-note">
+            <span aria-hidden="true">↳</span> Same curiosity. Six ways to
+            explain it.
+          </p>
+        </div>
+        <div class="classroom-wrap" id="classroom">
+          <div class="paper-tab" aria-hidden="true">LET’S LEARN SOMETHING</div>
+          <div class="lesson-card">
+            <div class="lesson-top">
+              <span class="tiny-label">THE INTERACTIVE CLASSROOM</span
+              ><span class="lesson-count" id="lesson-count">01 / 03</span>
+            </div>
+            <div class="lesson-selector" data-enhanced hidden>
+              <label for="lesson-select">Choose a question</label
+              ><select id="lesson-select">
+                <option value="0">Growing plants</option>
+                <option value="1">Musical rhythm</option>
+                <option value="2">Rainbows</option>
+              </select>
+            </div>
+            <div class="lesson-question">
+              <span class="question-mark" aria-hidden="true">Q.</span>
+              <h2 id="lesson-question">What do plants need to grow?</h2>
+              <svg class="plant-doodle" viewBox="0 0 90 95" aria-hidden="true">
+                <path
+                  d="M45 71V30M45 52C18 54 14 27 17 22c20 0 28 10 28 30ZM45 40C44 15 68 11 76 14c-1 20-11 26-31 26ZM27 72h36l-6 17H33z"
+                />
+                <path class="doodle-rays" d="M21 8 16 2M8 18H1M66 3l4-8" />
+              </svg>
+            </div>
+            <div class="lesson-response" aria-live="polite" aria-atomic="true">
+              <div class="answer-label">
+                <span id="lesson-level">LOWER ELEMENTARY</span
+                ><span id="lesson-range">GRADES 1–2</span>
+              </div>
+              <blockquote id="lesson-answer">
+                Plants need water to grow strong. They also need sunlight every
+                day. Sunlight helps them make their food. Food is made from air
+                too. Air has something called carbon dioxide. Plants use it to
+                make food. They also need good soil always. Soil gives them the
+                right support. Support helps them stand up tall. Tall plants can
+                get more sunlight.
+              </blockquote>
+              <span class="excerpt-marker" aria-hidden="true">[…]</span>
+            </div>
+            <div class="grade-picker" data-enhanced hidden>
+              <div class="grade-picker-caption">
+                <span>Change the reading level</span
+                ><span aria-hidden="true">→</span>
+              </div>
+              <div
+                class="grade-buttons"
+                role="group"
+                aria-label="Target grade level"
+              >
+                <button
+                  type="button"
+                  data-grade="0"
+                  aria-pressed="true"
+                  aria-label="Lower elementary, grades 1 to 2"
+                >
+                  1–2</button
+                ><button
+                  type="button"
+                  data-grade="1"
+                  aria-pressed="false"
+                  aria-label="Middle elementary, grades 3 to 4"
+                >
+                  3–4</button
+                ><button
+                  type="button"
+                  data-grade="2"
+                  aria-pressed="false"
+                  aria-label="Upper elementary, grades 5 to 6"
+                >
+                  5–6</button
+                ><button
+                  type="button"
+                  data-grade="3"
+                  aria-pressed="false"
+                  aria-label="Middle school, grades 7 to 9"
+                >
+                  7–9</button
+                ><button
+                  type="button"
+                  data-grade="4"
+                  aria-pressed="false"
+                  aria-label="High school, grades 10 to 12"
+                >
+                  10–12</button
+                ><button
+                  type="button"
+                  data-grade="5"
+                  aria-pressed="false"
+                  aria-label="College and adult, grade 13 and above"
+                >
+                  13+
+                </button>
+              </div>
+            </div>
+            <div class="lesson-footnote">
+              <span>Recorded model output · excerpt</span
+              ><a
+                id="lesson-source"
+                href="https://github.com/harryoh99/ClassroomAI/blob/main/src/example_results/results_finetuned_ppl/finetuned_gpt4o_mini_primary-low.txt"
+                >View source ↗</a
+              >
+            </div>
+          </div>
+          <div class="sticker" aria-hidden="true">
+            <span>6</span>GRADE<br />LEVELS
+          </div>
+        </div>
+      </section>
+
+      <section class="paper-byline shell" aria-label="Paper and authors">
+        <div>
+          <span class="tiny-label">THE PAPER</span>
+          <h2>
+            Classroom AI: large language models<br class="desktop-only" />
+            as grade-specific teachers
+          </h2>
+        </div>
+        <div class="author-block">
+          <p class="authors">
+            <span>Jio Oh<sup>1,2,3</sup></span
+            ><span>Steven Euijong Whang<sup>1</sup></span
+            ><span>James Evans<sup>4</sup></span
+            ><span>Jindong Wang<sup>3</sup></span>
+          </p>
+          <p class="affiliations">
+            <span><sup>1</sup> KAIST</span
+            ><span><sup>2</sup> Microsoft Research Asia</span
+            ><span><sup>3</sup> William &amp; Mary</span
+            ><span><sup>4</sup> University of Chicago</span>
+          </p>
+          <p class="publication-meta">
+            npj Artificial Intelligence 2, 28 (2026) · Published 3 March 2026
+          </p>
+        </div>
+      </section>
+
+      <section class="big-picture shell section" id="idea">
+        <div class="section-label"><span>01</span> THE BIG PICTURE</div>
+        <div class="idea-grid">
+          <h2>
+            Knowing the answer<br />is only
+            <span class="serif-italic">half the lesson.</span>
+          </h2>
+          <div class="prose">
+            <p>
+              Ask a language model to explain something to a young learner, and
+              it often answers at a much higher reading level—even when the
+              prompt specifies the grade.
+            </p>
+            <p>
+              Classroom AI makes the audience part of training. It builds
+              grade-labeled question–answer data, then fine-tunes a separate
+              model for each of six educational levels. The goal is to make
+              open-ended explanations easier to read while retaining their
+              usefulness.
+            </p>
+            <a
+              class="text-link"
+              href="https://www.nature.com/articles/s44387-026-00081-7#Sec1"
+              >Why grade-specific teaching matters
+              <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+        <div class="takeaway-row">
+          <div>
+            <strong>6</strong
+            ><span>educational levels<br />grades 1–2 through 13+</span>
+          </div>
+          <div>
+            <strong>7</strong
+            ><span>readability metrics<br />combined into one label</span>
+          </div>
+          <div>
+            <strong>1.28<span>M+</span></strong
+            ><span>question–answer pairs<br />in the reported collection</span>
+          </div>
+          <div class="takeaway-highlight">
+            <strong>+35.64<span>pp</span></strong
+            ><span>average alignment gain<br />over the prompt baseline</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="method-section section" id="method">
+        <div class="shell">
+          <div class="section-label">
+            <span>02</span> FROM QUESTIONS TO CLASSROOMS
+          </div>
+          <div class="section-heading">
+            <h2>Train for the <span class="serif-italic">reader.</span></h2>
+            <p>Generate broadly. Measure carefully. Fine-tune by grade.</p>
+          </div>
+          <ol class="method-flow">
+            <li>
+              <div class="method-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <path d="M10 9h28v24H24l-9 7v-7h-5zM17 17h14M17 24h9" />
+                </svg>
+              </div>
+              <span class="step-number">STEP 01</span>
+              <h3>Start with curiosity</h3>
+              <p>
+                Create open-ended questions across eight fields, from art and
+                music to science and AI.
+              </p>
+              <span class="step-tag">8 educational fields</span>
+            </li>
+            <li>
+              <div class="method-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <path d="M12 8h24v32H12zM18 16h12M18 23h12M18 30h7M7 13v25" />
+                </svg>
+              </div>
+              <span class="step-number">STEP 02</span>
+              <h3>Write many explanations</h3>
+              <p>
+                Vary target grade and sentence length to create multiple
+                candidate answers to each question.
+              </p>
+              <span class="step-tag">54 prompt variants per question</span>
+            </li>
+            <li>
+              <div class="method-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <path d="M8 11h32M8 24h32M8 37h32M16 7v8M32 20v8M22 33v8" />
+                </svg>
+              </div>
+              <span class="step-number">STEP 03</span>
+              <h3>Find the reading level</h3>
+              <p>
+                Group seven readability measures and combine their votes into
+                one grade-level label.
+              </p>
+              <span class="step-tag">7 metrics → 3 groups → 1 label</span>
+            </li>
+            <li>
+              <div class="method-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48">
+                  <path
+                    d="m5 17 19-9 19 9-19 9zM12 21v12c7 7 17 7 24 0V21M43 18v16"
+                  />
+                </svg>
+              </div>
+              <span class="step-number">STEP 04</span>
+              <h3>Learn to teach at each level</h3>
+              <p>
+                Fine-tune six GPT-4o mini models on the corresponding
+                grade-labeled answer sets.
+              </p>
+              <span class="step-tag">6 grade-specific models</span>
+            </li>
+          </ol>
+          <div class="metrics-notebook">
+            <div class="notebook-title">
+              <span class="tiny-label">HOW DO YOU MEASURE “EASY TO READ”?</span>
+              <h3>Seven perspectives.<br />One shared decision.</h3>
+              <p>
+                Each group first finds a common grade estimate, falling back to
+                its lowest estimate when there is no overlap. The final label
+                uses majority agreement, or the median when all three groups
+                disagree.
+              </p>
+              <a
+                class="text-link"
+                href="https://www.nature.com/articles/s44387-026-00081-7#Sec11"
+                >Read Algorithm 1 ↗</a
+              >
+            </div>
+            <div class="metric-groups">
+              <div>
+                <span class="group-number">G₁</span>
+                <div>
+                  <h4>Familiar vocabulary</h4>
+                  <p>Dale–Chall · Spache</p>
+                  <small>Uses predefined easy-word lists.</small>
+                </div>
+              </div>
+              <div>
+                <span class="group-number">G₂</span>
+                <div>
+                  <h4>Word &amp; sentence length</h4>
+                  <p>Flesch Reading Ease · Flesch–Kincaid · Coleman–Liau</p>
+                  <small>Measures the structure of the text.</small>
+                </div>
+              </div>
+              <div>
+                <span class="group-number">G₃</span>
+                <div>
+                  <h4>Syllable complexity</h4>
+                  <p>Linsear Write · Gunning Fog</p>
+                  <small>Accounts for syllables per word.</small>
+                </div>
+              </div>
+              <p class="held-out-note">
+                <span aria-hidden="true">✓</span> ARI is held out for
+                evaluation, providing an additional readability check.
+              </p>
+            </div>
+          </div>
+          <details class="figure-details">
+            <summary>
+              <span>See the original framework figure</span
+              ><span aria-hidden="true">+</span>
+            </summary>
+            <figure>
+              <a href="assets/framework.png" target="_blank" rel="noopener"
+                ><img
+                  src="assets/framework.png"
+                  width="1999"
+                  height="805"
+                  loading="lazy"
+                  alt="Published Figure 4: open-ended questions, varied prompts, readability classification, and grade-specific fine-tuning, with sample responses across six levels."
+              /></a>
+              <figcaption>
+                Published Figure 4. Original figure reproduced unchanged from Oh
+                et al., npj Artificial Intelligence (2026).
+                <a
+                  href="https://www.nature.com/articles/s44387-026-00081-7#Fig4"
+                  >View in article ↗</a
+                >
+              </figcaption>
+            </figure>
+          </details>
+        </div>
+      </section>
+
+      <section class="results-section section" id="results">
+        <div class="shell">
+          <div class="section-label"><span>03</span> THE EVIDENCE</div>
+          <div class="results-intro">
+            <div>
+              <h2>
+                A closer match.<br /><span class="serif-italic"
+                  >Across the classroom.</span
+                >
+              </h2>
+              <p>
+                Compare how often explanations land at the intended reading
+                level. The biggest gains appear at the elementary levels.
+              </p>
+            </div>
+            <div class="headline-result">
+              <strong>+35.64<span>pp</span></strong>
+              <p>
+                Average gain over prompted GPT-4o mini<br />across six levels
+                and four datasets.
+              </p>
+              <a href="https://www.nature.com/articles/s44387-026-00081-7#Sec3"
+                >Published compatibility result ↗</a
+              >
+            </div>
+          </div>
+          <div class="comparison-card">
+            <div class="comparison-heading">
+              <div>
+                <span class="tiny-label">RESULTS EXPLORER</span>
+                <h3>Does the answer fit the reader?</h3>
+              </div>
+              <a href="assets/supplement.pdf#page=8">Supplementary Table 3 ↗</a>
+            </div>
+            <div class="chart-controls" data-enhanced hidden>
+              <label for="dataset-select"
+                >Evaluation dataset<select id="dataset-select">
+                  <option value="average">Average · all four datasets</option>
+                  <option value="synthetic">GPT-4o questions</option>
+                  <option value="scienceqa">ScienceQA (open-ended)</option>
+                  <option value="eli5">ELI5_Category</option>
+                  <option value="natural">Natural Questions</option>
+                </select></label
+              ><label for="baseline-select"
+                >Prompted model<select id="baseline-select">
+                  <option value="0">GPT-4o mini</option>
+                  <option value="1">GPT-4o</option>
+                  <option value="2">Llama 3.3 · 70B</option>
+                  <option value="3">Llama 3.1 · 70B</option>
+                  <option value="4">Llama 3.1 · 8B</option>
+                  <option value="5">Qwen 2.5 · 72B</option>
+                  <option value="6">Gemma 2 · 27B</option>
+                  <option value="7">Phi-4 · 14B</option>
+                  <option value="8">Mixtral · 8×7B</option>
+                </select></label
+              >
+            </div>
+            <div class="chart-legend">
+              <span
+                ><i class="prompt-dot"></i
+                ><span id="baseline-legend">GPT-4o mini + prompting</span></span
+              ><span
+                ><i class="tuned-dot"></i>Classroom AI · fine-tuned GPT-4o
+                mini</span
+              >
+            </div>
+            <div class="chart-title">
+              <span>Target-grade alignment · higher is better</span
+              ><span>0–100%</span>
+            </div>
+            <div id="comparison-chart" class="comparison-chart">
+              <div
+                class="chart-row"
+                role="img"
+                aria-label="Lower elementary, grades 1–2: prompted GPT-4o mini 2.12 percent; Classroom AI 59.34 percent."
+              >
+                <div class="chart-grade">
+                  Lower elementary<small>Grades 1–2</small>
+                </div>
+                <div class="chart-pair">
+                  <div class="chart-track">
+                    <div class="chart-bar" style="--value: 2.1175%">
+                      <span class="bar-value">2.12%</span>
+                    </div>
+                  </div>
+                  <div class="chart-track">
+                    <div class="chart-bar tuned" style="--value: 59.3375%">
+                      <span class="bar-value">59.34%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="chart-row"
+                role="img"
+                aria-label="Middle elementary, grades 3–4: prompted GPT-4o mini 9.69 percent; Classroom AI 71.19 percent."
+              >
+                <div class="chart-grade">
+                  Middle elementary<small>Grades 3–4</small>
+                </div>
+                <div class="chart-pair">
+                  <div class="chart-track">
+                    <div class="chart-bar" style="--value: 9.690000000000001%">
+                      <span class="bar-value">9.69%</span>
+                    </div>
+                  </div>
+                  <div class="chart-track">
+                    <div class="chart-bar tuned" style="--value: 71.1925%">
+                      <span class="bar-value">71.19%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="chart-row"
+                role="img"
+                aria-label="Upper elementary, grades 5–6: prompted GPT-4o mini 34.23 percent; Classroom AI 61.02 percent."
+              >
+                <div class="chart-grade">
+                  Upper elementary<small>Grades 5–6</small>
+                </div>
+                <div class="chart-pair">
+                  <div class="chart-track">
+                    <div class="chart-bar" style="--value: 34.227500000000006%">
+                      <span class="bar-value">34.23%</span>
+                    </div>
+                  </div>
+                  <div class="chart-track">
+                    <div class="chart-bar tuned" style="--value: 61.015%">
+                      <span class="bar-value">61.02%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="chart-row"
+                role="img"
+                aria-label="Middle school, grades 7–9: prompted GPT-4o mini 54.77 percent; Classroom AI 63.32 percent."
+              >
+                <div class="chart-grade">
+                  Middle school<small>Grades 7–9</small>
+                </div>
+                <div class="chart-pair">
+                  <div class="chart-track">
+                    <div class="chart-bar" style="--value: 54.775%">
+                      <span class="bar-value">54.77%</span>
+                    </div>
+                  </div>
+                  <div class="chart-track">
+                    <div
+                      class="chart-bar tuned"
+                      style="--value: 63.315000000000005%"
+                    >
+                      <span class="bar-value">63.32%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="chart-row"
+                role="img"
+                aria-label="High school, grades 10–12: prompted GPT-4o mini 35.69 percent; Classroom AI 60.60 percent."
+              >
+                <div class="chart-grade">
+                  High school<small>Grades 10–12</small>
+                </div>
+                <div class="chart-pair">
+                  <div class="chart-track">
+                    <div class="chart-bar" style="--value: 35.6875%">
+                      <span class="bar-value">35.69%</span>
+                    </div>
+                  </div>
+                  <div class="chart-track">
+                    <div
+                      class="chart-bar tuned"
+                      style="--value: 60.597500000000004%"
+                    >
+                      <span class="bar-value">60.60%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="chart-row"
+                role="img"
+                aria-label="College / adult, grades 13+: prompted GPT-4o mini 19.27 percent; Classroom AI 54.16 percent."
+              >
+                <div class="chart-grade">
+                  College / adult<small>Grades 13+</small>
+                </div>
+                <div class="chart-pair">
+                  <div class="chart-track">
+                    <div class="chart-bar" style="--value: 19.2675%">
+                      <span class="bar-value">19.27%</span>
+                    </div>
+                  </div>
+                  <div class="chart-track">
+                    <div class="chart-bar tuned" style="--value: 54.16%">
+                      <span class="bar-value">54.16%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="comparison-summary"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <span class="summary-icon" aria-hidden="true">↗</span>
+              <p id="comparison-summary">
+                <strong>+35.64 percentage points</strong> on average across the
+                six target levels.
+              </p>
+            </div>
+            <p class="chart-caption" id="chart-caption">
+              An unweighted average across four datasets. Each value is the
+              percentage of answers assigned to the requested grade by the
+              integrated readability measure. This is reading-level alignment,
+              not question-answer accuracy.
+            </p>
+            <details class="numbers-details">
+              <summary>View exact results and held-out ARI</summary>
+              <div
+                class="table-scroll"
+                tabindex="0"
+                role="region"
+                aria-label="Exact target-grade alignment and held-out ARI values"
+              >
+                <table>
+                  <caption id="results-caption">
+                    Average across four datasets. ARI is mapped to six grade
+                    bands; closeness to the target band is better.
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Target</th>
+                      <th scope="col">Prompted (%)</th>
+                      <th scope="col">Classroom AI (%)</th>
+                      <th scope="col">Prompted ARI</th>
+                      <th scope="col">Classroom AI ARI</th>
+                    </tr>
+                  </thead>
+                  <tbody id="results-table-body">
+                    <tr>
+                      <th scope="row">Lower elementary (1)</th>
+                      <td>2.12</td>
+                      <td>59.34</td>
+                      <td>3.21</td>
+                      <td>1.32</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Middle elementary (2)</th>
+                      <td>9.69</td>
+                      <td>71.19</td>
+                      <td>3.67</td>
+                      <td>2.16</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Upper elementary (3)</th>
+                      <td>34.23</td>
+                      <td>61.02</td>
+                      <td>3.96</td>
+                      <td>3.45</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Middle school (4)</th>
+                      <td>54.77</td>
+                      <td>63.32</td>
+                      <td>4.39</td>
+                      <td>4.41</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">High school (5)</th>
+                      <td>35.69</td>
+                      <td>60.60</td>
+                      <td>4.86</td>
+                      <td>5.23</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">College / adult (6)</th>
+                      <td>19.27</td>
+                      <td>54.16</td>
+                      <td>5.20</td>
+                      <td>5.61</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+          <div class="result-notes">
+            <article>
+              <span class="result-note-number">01</span>
+              <h3>Alignment improves</h3>
+              <p>
+                Fine-tuning increases target-grade compatibility across the six
+                levels compared with the GPT-4o mini prompt baseline.
+              </p>
+            </article>
+            <article>
+              <span class="result-note-number">02</span>
+              <h3>Accuracy remains comparable</h3>
+              <p>
+                ScienceQA multiple-choice accuracy is 85.59–87.02% for the six
+                fine-tuned models, compared with 89.42% for the base model.
+              </p>
+              <a
+                href="https://github.com/harryoh99/ClassroomAI/blob/main/src/fig/accuracy_figure.ipynb"
+                >Accuracy figure source ↗</a
+              >
+            </article>
+            <article>
+              <span class="result-note-number">03</span>
+              <h3>A separate metric agrees</h3>
+              <p>
+                Held-out ARI scores also move toward the target levels. The
+                result extends beyond the seven measures used to label training
+                data.
+              </p>
+            </article>
+          </div>
+          <details class="figure-details light-details">
+            <summary>
+              <span>See all panels of the published results figure</span
+              ><span aria-hidden="true">+</span>
+            </summary>
+            <figure>
+              <a
+                href="assets/published-results.png"
+                target="_blank"
+                rel="noopener"
+                ><img
+                  src="assets/published-results.png"
+                  width="2000"
+                  height="2419"
+                  loading="lazy"
+                  alt="Published Figure 1 with grade alignment and held-out ARI, seven readability metrics, ScienceQA accuracy, diversity and perplexity, and human ranking results."
+              /></a>
+              <figcaption>
+                Published Figure 1, reproduced unchanged.
+                <a
+                  href="https://www.nature.com/articles/s44387-026-00081-7#Fig1"
+                  >View in article ↗</a
+                >
+              </figcaption>
+            </figure>
+          </details>
+        </div>
+      </section>
+
+      <section class="human-section shell section" id="people">
+        <div class="section-label"><span>04</span> BEYOND THE METRICS</div>
+        <div class="human-grid">
+          <div class="human-copy">
+            <h2>
+              Do people hear<br />the
+              <span class="serif-italic">difference?</span>
+            </h2>
+            <p>
+              In the ranking study, participants assigned six model answers to
+              the educational levels they believed could understand them. Their
+              judgments closely tracked the intended order.
+            </p>
+            <p>
+              Separate ratings examined question difficulty, answer
+              comprehensibility, and how well the answer addressed the question.
+            </p>
+            <a
+              class="text-link"
+              href="https://www.nature.com/articles/s44387-026-00081-7#Sec6"
+              >Explore the human evaluation ↗</a
+            >
+          </div>
+          <div class="human-evidence">
+            <div class="tau-card">
+              <span class="tiny-label">AGREEMENT WITH HUMAN RANKINGS</span
+              ><strong>0.76<span>τ</span></strong>
+              <p>Kendall’s tau · ranking study<br />108 adult participants</p>
+              <div class="rank-strip" aria-hidden="true">
+                <span>1–2</span><span>3–4</span><span>5–6</span><span>7–9</span
+                ><span>10–12</span><span>13+</span>
+              </div>
+            </div>
+            <div class="margin-note">
+              <span class="tiny-label">A NOTE ON WHAT THIS TELLS US</span>
+              <p>
+                Evaluators were English-speaking adults who had completed high
+                school. The study measures perceived difficulty and response
+                quality; direct learning gains in children remain to be tested.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="concept-note">
+          <span class="asterisk" aria-hidden="true">✳</span>
+          <div>
+            <h3>Easy words are one part of understanding.</h3>
+            <p>
+              A simpler explanation can still describe an unfamiliar concept.
+              The paper identifies conceptual difficulty as an important next
+              step, alongside readability, for educational AI.
+            </p>
+          </div>
+          <a href="https://www.nature.com/articles/s44387-026-00081-7#Sec7"
+            >Discussion ↗</a
+          >
+        </div>
+        <details class="figure-details">
+          <summary>
+            <span
+              >Inside the model: vocabulary and intermediate predictions</span
+            ><span aria-hidden="true">+</span>
+          </summary>
+          <div class="analysis-explainer">
+            <p>
+              A separate Llama 3.1 8B analysis compares lower-elementary and
+              adult models. In the sky-color example, layer predictions shift
+              between terms such as “air,” “atmosphere,” and “wavelength.” This
+              is an exploratory view of model behavior.
+            </p>
+            <figure>
+              <a href="assets/logit-lens.png" target="_blank" rel="noopener"
+                ><img
+                  src="assets/logit-lens.png"
+                  width="1753"
+                  height="2484"
+                  loading="lazy"
+                  alt="Published Figure 3: logit-lens visualizations of lower-elementary and adult Llama 3.1 8B models explaining why the sky is blue."
+              /></a>
+              <figcaption>
+                Published Figure 3, reproduced unchanged.
+                <a
+                  href="https://www.nature.com/articles/s44387-026-00081-7#Fig3"
+                  >View in article ↗</a
+                >
+              </figcaption>
+            </figure>
+          </div>
+        </details>
+      </section>
+
+      <section class="data-section section" id="data">
+        <div class="shell">
+          <div class="section-label">
+            <span>05</span> A FOUNDATION TO BUILD ON
+          </div>
+          <div class="data-grid">
+            <div>
+              <h2>
+                Many subjects.<br /><span class="serif-italic"
+                  >A shared method.</span
+                >
+              </h2>
+              <p class="data-lede">
+                A model-agnostic collection of question–answer pairs, organized
+                by reading level and spanning eight educational fields.
+              </p>
+              <div class="subject-list">
+                <span>Art</span><span>Artificial intelligence</span
+                ><span>Health education</span><span>Literature</span
+                ><span>Music</span><span>Physical education</span
+                ><span>Science</span><span>Social science</span>
+              </div>
+              <a
+                class="button button-blue"
+                href="https://github.com/harryoh99/ClassroomAI/blob/main/src/data_grade/link_to_data.txt"
+                >Find the training data <span aria-hidden="true">↗</span></a
+              >
+            </div>
+            <div class="dataset-sheet">
+              <div class="dataset-sheet-header">
+                <span class="tiny-label">THE REPORTED TRAINING COLLECTION</span
+                ><strong>1.28M+ <span>Q&amp;A pairs</span></strong>
+              </div>
+              <dl class="dataset-counts">
+                <div>
+                  <dt><span>01</span>Lower elementary</dt>
+                  <dd>71,524</dd>
+                </div>
+                <div>
+                  <dt><span>02</span>Middle elementary</dt>
+                  <dd>324,910</dd>
+                </div>
+                <div>
+                  <dt><span>03</span>Upper elementary</dt>
+                  <dd>302,485</dd>
+                </div>
+                <div>
+                  <dt><span>04</span>Middle school</dt>
+                  <dd>275,131</dd>
+                </div>
+                <div>
+                  <dt><span>05</span>High school</dt>
+                  <dd>130,779</dd>
+                </div>
+                <div>
+                  <dt><span>06</span>College / adult</dt>
+                  <dd>182,590</dd>
+                </div>
+              </dl>
+              <p class="small-note">
+                Per-level counts reproduced from Supplementary Table 1. The
+                headline is rounded; see the source for the reported total.
+              </p>
+              <a class="text-link" href="assets/supplement.pdf#page=5"
+                >Collection details ↗</a
+              >
+            </div>
+          </div>
+          <div class="evaluation-strip">
+            <span class="tiny-label">EVALUATED ON</span>
+            <div>
+              <strong>ScienceQA</strong><span>Educational questions</span>
+            </div>
+            <div>
+              <strong>ELI5_Category</strong><span>Explanatory questions</span>
+            </div>
+            <div>
+              <strong>Natural Questions</strong><span>Real search queries</span>
+            </div>
+            <div>
+              <strong>GPT-4o questions</strong
+              ><span>Cross-subject prompts</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="resources-section shell section" id="resources">
+        <div class="section-label"><span>06</span> KEEP EXPLORING</div>
+        <div class="section-heading">
+          <h2>
+            Bring this work<br />into
+            <span class="serif-italic">your research.</span>
+          </h2>
+          <p>
+            Read the paper, explore the implementation, and build on the data.
+          </p>
+        </div>
+        <div class="resource-grid">
+          <a
+            class="resource-card"
+            href="https://www.nature.com/articles/s44387-026-00081-7"
+            ><span class="resource-icon" aria-hidden="true">↗</span
+            ><span class="tiny-label">PUBLICATION</span>
+            <h3>Read the full story</h3>
+            <p>
+              Published in npj Artificial Intelligence, with methods, results,
+              and discussion.
+            </p>
+            <span class="resource-link"
+              >Open article <span aria-hidden="true">↗</span></span
+            ></a
+          ><a
+            class="resource-card"
+            href="https://github.com/harryoh99/ClassroomAI"
+            ><span class="resource-icon code-icon" aria-hidden="true">{ }</span
+            ><span class="tiny-label">CODE</span>
+            <h3>Look under the hood</h3>
+            <p>
+              Generation, readability classification, evaluation, and analysis
+              code.
+            </p>
+            <span class="resource-link"
+              >Explore GitHub <span aria-hidden="true">↗</span></span
+            ></a
+          ><a
+            class="resource-card"
+            href="https://github.com/harryoh99/ClassroomAI/blob/main/src/data_grade/link_to_data.txt"
+            ><span class="resource-icon" aria-hidden="true">↓</span
+            ><span class="tiny-label">DATA</span>
+            <h3>Start with the dataset</h3>
+            <p>
+              Follow the repository’s data link to the grade-specific training
+              collection.
+            </p>
+            <span class="resource-link"
+              >Dataset access <span aria-hidden="true">↗</span></span
+            ></a
+          >
+        </div>
+        <div class="secondary-resources">
+          <a href="https://arxiv.org/abs/2601.06225">arXiv version ↗</a
+          ><a href="assets/arxiv-paper.pdf">Download arXiv PDF ↓</a
+          ><a href="assets/supplement.pdf">Journal supplement ↓</a
+          ><a href="mailto:jdw@wm.edu">Contact the corresponding author ↗</a>
+        </div>
+      </section>
+
+      <section class="citation-section shell" id="citation">
+        <div>
+          <span class="section-label">CITE THE PAPER</span>
+          <h2>
+            A reference for<br />the next
+            <span class="serif-italic">chapter.</span>
+          </h2>
+          <p>
+            Oh, J., Whang, S. E., Evans, J. &amp; Wang, J.<br />npj Artificial
+            Intelligence <strong>2</strong>, 28 (2026).
+          </p>
+          <a class="text-link" href="https://doi.org/10.1038/s44387-026-00081-7"
+            >doi:10.1038/s44387-026-00081-7 ↗</a
+          >
+        </div>
+        <div class="citation-box">
+          <div class="citation-toolbar">
+            <span>BibTeX</span>
+            <div>
+              <a href="assets/citation.bib" download>Download .bib ↓</a
+              ><button type="button" id="copy-citation" data-enhanced hidden>
+                Copy citation
+              </button>
+            </div>
+          </div>
+          <pre><code id="bibtex">@article{oh2026classroomai,
+  title = {Classroom AI: large language models
+           as grade-specific teachers},
+  author = {Oh, Jio and Whang, Steven Euijong
+            and Evans, James and Wang, Jindong},
+  journal = {npj Artificial Intelligence},
+  volume = {2},
+  pages = {28},
+  year = {2026},
+  doi = {10.1038/s44387-026-00081-7},
+  url = {https://doi.org/10.1038/s44387-026-00081-7}
+}</code></pre>
+          <p id="copy-status" class="sr-only" role="status"></p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer shell">
+      <div class="footer-top">
+        <a class="brand" href="#"
+          >Classroom<span class="brand-ai">AI</span
+          ><span class="footer-star" aria-hidden="true">✳</span></a
+        >
+        <p>Good explanations open doors.</p>
+        <a href="#">Back to top ↑</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Classroom AI authors.</span>
+        <p>
+          Original publication figures: Oh et al.,
+          <a href="https://www.nature.com/articles/s44387-026-00081-7"
+            >npj Artificial Intelligence (2026)</a
+          >,
+          <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+            >CC BY-NC-ND 4.0</a
+          >. Reproduced unchanged.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
