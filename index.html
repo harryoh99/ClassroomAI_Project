@@ -63,7 +63,8 @@
         </button>
         <nav id="navigation" aria-label="Main navigation">
           <a href="#classroom">The classroom</a><a href="#method">Method</a
-          ><a href="#results">Results</a><a href="#resources">Resources</a
+          ><a href="#results">Results</a><a href="#worldview">World View</a
+          ><a href="#resources">Resources</a
           ><a
             class="nav-paper"
             href="https://www.nature.com/articles/s44387-026-00081-7"
@@ -849,44 +850,163 @@
             >Discussion ↗</a
           >
         </div>
-        <details class="figure-details">
-          <summary>
-            <span
-              >Inside the model: vocabulary and intermediate predictions</span
-            ><span aria-hidden="true">+</span>
-          </summary>
-          <div class="analysis-explainer">
+      </section>
+
+      <section
+        class="worldview-section section"
+        id="worldview"
+        aria-labelledby="worldview-title"
+      >
+        <div class="shell">
+          <div class="section-label">
+            <span>05</span> WORLD VIEW / LOGIT LENS ANALYSIS
+          </div>
+          <div class="section-heading">
+            <h2 id="worldview-title">
+              World View:<br /><span class="serif-italic"
+                >inside the model.</span
+              >
+            </h2>
             <p>
-              A separate Llama 3.1 8B analysis compares lower-elementary and
-              adult models. In the sky-color example, layer predictions shift
-              between terms such as “air,” “atmosphere,” and “wavelength.” This
-              is an exploratory view of model behavior.
+              How does training for a particular grade change the model’s
+              intermediate predictions? A logit lens makes those vocabulary
+              patterns visible.
             </p>
-            <figure>
-              <a href="assets/logit-lens.png" target="_blank" rel="noopener"
+          </div>
+          <div class="worldview-prompt">
+            <div>
+              <span class="tiny-label">ONE SHARED PROMPT</span>
+              <blockquote>
+                “Why is the sky blue? The sky is blue because”
+              </blockquote>
+            </div>
+            <p>
+              <strong>Llama 3.1 8B</strong
+              ><span>Lower-elementary &amp; adult fine-tunes</span>
+            </p>
+          </div>
+          <div class="worldview-grid">
+            <div class="worldview-notes">
+              <article class="worldview-finding">
+                <span class="tiny-label">TOP PANEL / LOWER ELEMENTARY</span>
+                <h3>Everyday language emerges.</h3>
+                <div
+                  class="worldview-words"
+                  aria-label="Reported vocabulary shift"
+                >
+                  <span>atmosphere</span
+                  ><span class="word-arrow" aria-label="to">→</span
+                  ><strong>air</strong>
+                </div>
+                <p>
+                  The paper reports a shift toward familiar words and more
+                  direct explanations. In this example, “atmosphere” gives way
+                  to “air” in later predictions.
+                </p>
+              </article>
+              <article class="worldview-finding worldview-adult">
+                <span class="tiny-label">BOTTOM PANEL / ADULT</span>
+                <h3>Technical detail stays in view.</h3>
+                <div
+                  class="worldview-words"
+                  aria-label="Example technical vocabulary"
+                >
+                  <strong>wavelength</strong><strong>dispersed</strong>
+                </div>
+                <p>
+                  The adult model’s intermediate predictions include more
+                  specialized terms, accompanying its more detailed
+                  explanations.
+                </p>
+              </article>
+              <div class="worldview-guide">
+                <h3>How to read the logit lens</h3>
+                <p>
+                  The analysis projects each layer’s hidden state into the
+                  model’s vocabulary and displays its most likely token.
+                </p>
+                <ul>
+                  <li>
+                    <strong>Rows:</strong> predictions at successive transformer
+                    layers.
+                  </li>
+                  <li>
+                    <strong>Bottom labels:</strong> tokens in the generated
+                    response.
+                  </li>
+                  <li>
+                    <strong>Warmer colors:</strong> greater confidence in the
+                    projected prediction.
+                  </li>
+                </ul>
+                <p class="worldview-scope">
+                  This qualitative analysis uses Llama 3.1 8B; the main
+                  grade-alignment experiments use GPT-4o mini.
+                </p>
+                <a
+                  class="text-link"
+                  href="https://github.com/harryoh99/ClassroomAI/blob/main/src/worldview_logitlens.ipynb"
+                  >Explore the logit lens notebook ↗</a
+                >
+              </div>
+            </div>
+            <figure class="worldview-figure">
+              <div class="worldview-figure-header">
+                <span class="tiny-label">PUBLISHED FIGURE 3</span
+                ><a href="assets/logit-lens.png" target="_blank" rel="noopener"
+                  >Open full size ↗</a
+                >
+              </div>
+              <a
+                href="assets/logit-lens.png"
+                target="_blank"
+                rel="noopener"
+                aria-label="Open the original logit lens figure at full resolution"
                 ><img
                   src="assets/logit-lens.png"
                   width="1753"
                   height="2484"
                   loading="lazy"
-                  alt="Published Figure 3: logit-lens visualizations of lower-elementary and adult Llama 3.1 8B models explaining why the sky is blue."
+                  alt="Logit lens heatmaps for the same sky-color prompt. Top: the lower-elementary Llama 3.1 8B model shifts from atmosphere to air. Bottom: the adult model includes wavelength and dispersed. Rows show layer predictions; generated tokens appear below each panel."
               /></a>
               <figcaption>
-                Published Figure 3, reproduced unchanged.
+                Lower elementary (top) and adult (bottom). Original figure
+                reproduced unchanged from Oh et al.,
+                <em>npj Artificial Intelligence</em> (2026).
                 <a
                   href="https://www.nature.com/articles/s44387-026-00081-7#Fig3"
-                  >View in article ↗</a
+                  >Figure and discussion ↗</a
                 >
               </figcaption>
             </figure>
           </div>
-        </details>
+          <div class="worldview-output">
+            <div>
+              <span class="tiny-label">FROM LAYERS TO LANGUAGE</span>
+              <h3>The pattern also appears in model outputs.</h3>
+            </div>
+            <p>
+              Across grade levels, the supplementary analysis finds longer
+              sentences and more specialized vocabulary for higher-grade models.
+              Sentence-length distributions, word clouds, and word-frequency
+              plots offer complementary views.
+            </p>
+            <div class="worldview-output-links">
+              <a href="assets/supplement.pdf#page=10"
+                >Supplementary analysis ↗</a
+              ><a
+                href="https://github.com/harryoh99/ClassroomAI/tree/main/src/worldview_analysis"
+                >Output analysis files ↗</a
+              >
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="data-section section" id="data">
         <div class="shell">
           <div class="section-label">
-            <span>05</span> A FOUNDATION TO BUILD ON
+            <span>06</span> A FOUNDATION TO BUILD ON
           </div>
           <div class="data-grid">
             <div>
@@ -971,7 +1091,7 @@
       </section>
 
       <section class="resources-section shell section" id="resources">
-        <div class="section-label"><span>06</span> KEEP EXPLORING</div>
+        <div class="section-label"><span>07</span> KEEP EXPLORING</div>
         <div class="section-heading">
           <h2>
             Bring this work<br />into
